@@ -1,0 +1,7 @@
+.scroll-container {
+  height: 106vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 10;
+  top: 55vh;
+}

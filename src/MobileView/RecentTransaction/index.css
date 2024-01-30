@@ -1,0 +1,36 @@
+.card-details{
+    background-color: white;
+    width: 412px;
+}
+
+.outer-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #009DFF1A;
+    height: 48px;
+    width: 48px;
+}
+
+.inner-card{
+    box-shadow:2px 2px 2px 2px #0000000A;
+}
+
+.card-details-text{
+    color:#0C365A;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.view-all-text{
+    color: #01D167;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DDFFEC;
+    font-weight: 500;
+    font-size: 13px;
+    padding-block:16px ;
+}

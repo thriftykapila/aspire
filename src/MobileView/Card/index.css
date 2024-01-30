@@ -1,0 +1,41 @@
+
+.title{
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+}
+
+.subTitle{
+    color:#AAAAAA;
+    font-size: 13px;
+}
+
+.refund-text{
+    color:#0C365A;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.outer-icon-sm{
+    width: 24px;
+    height: 20px;
+    background-color: #325BAF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.price-text{
+    color:#01D167;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.card_container{
+    width: 300px;
+    @media only screen and (min-width: 600px){
+        width: 550px;
+    }
+}

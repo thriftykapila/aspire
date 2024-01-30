@@ -1,0 +1,14 @@
+.card-carousel {
+  height: 30vh;
+  position: fixed;
+  top: 22vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #0c365a;
+}
+
+.mobileContainer {
+  background-color: #0c365a;
+  color: white;
+}

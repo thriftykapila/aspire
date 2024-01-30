@@ -1,0 +1,47 @@
+.dollar-symbol{
+    background-color: #01D167;
+    border-radius: 4px;
+    padding: 2px 12px;
+    margin-right: 10px;
+}
+
+.dollar-value{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.new-card-btn{
+    font-size: 13px;
+    font-weight: bold;
+    color: #23CEFD;
+    margin-left: 6px;
+}
+
+.header-container{
+     
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 25vh;
+}
+
+.active-nav{
+    padding-bottom: 6px;
+    border-bottom: 2px solid #23CEFD;
+}
+
+.new-card-btn1{
+    border-radius: 50%;
+    color: white;
+    background-color: #325BAF;
+    border-radius: 4px;
+    padding: 9px 12px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    margin-left : 1200;
+}

@@ -1,0 +1,18 @@
+.card-details{
+    background-color: white;
+    width: 412px;
+
+    @media only screen and (min-width: 769px) {
+        width: 550px !important;
+    }
+}
+
+.inner-card{
+    box-shadow:2px 2px 2px 2px #0000000A;
+}
+
+.card-details-text{
+    color:#0C365A;
+    font-size: 14px;
+    font-weight: 500;
+}

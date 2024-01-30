@@ -1,0 +1,21 @@
+.nav-container{
+    padding: 54px;
+    background: #0C365A;
+    color:white;
+    height: 100vh;
+}
+
+.logo_subheading{
+    opacity: 30%;
+    margin-block: 20px;
+}
+
+.inactive-text{
+    font-size: 16px;
+}
+
+.active-text{
+    font-size: 16px;
+    font-weight: bold;
+    color: #01D167;
+}
