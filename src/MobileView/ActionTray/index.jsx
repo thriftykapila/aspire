@@ -16,7 +16,7 @@ import {
   handleFreezeCard,
 } from "../../features/account/accountSlice";
 
-const ActionTray = ({ borderRadiusAll = 4 }) => {
+const ActionTray = ({ borderRadiusAll = 2 }) => {
   const dispatch = useDispatch();
   const accountData = useSelector(getAccountData);
   const currentSlide = useSelector(getAccountSlide);

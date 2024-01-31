@@ -61,11 +61,14 @@ export const accountSlice = createSlice({
       });
       state.accountData = updatedAccount;
     },
+    addCard: (state, { payload }) => {
+      state.accountData = [...state.accountData, payload];
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setSlide, handleDeleteCard, handleFreezeCard } =
+export const { setSlide, handleDeleteCard, handleFreezeCard, addCard } =
   accountSlice.actions;
 
 export default accountSlice.reducer;
