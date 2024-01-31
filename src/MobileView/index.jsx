@@ -5,13 +5,15 @@ import "./mobileView.css";
 import Footer from "./Footer";
 import ScrollView from "./ScrollView";
 
-export const MobileView = () => (
-  <div className="mobileContainer">
-    <Header />
-    <div className="card-carousel">
-      <CardCarousel />
+export const MobileView = () => {
+  return (
+    <div className="mobileContainer">
+      <Header />
+      <div className="card-carousel">
+        <CardCarousel />
+      </div>
+      <ScrollView />
+      <Footer />
     </div>
-    <ScrollView />
-    <Footer />
-  </div>
-);
+  );
+};

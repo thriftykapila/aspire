@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./index.css";
 import ActionTray from "../ActionTray";
 import CardDetails from "../CardDetails";

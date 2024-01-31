@@ -6,87 +6,44 @@ import Eye from "../../assets/remove_red_eye-24px.svg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-const dummyData = [
-  {
-    cardDisplayName: "Monkey Man",
-    cardNumber: "1234567899876543",
-    cardExpiry: "12/24",
-    cardCvv: "123",
-    freeze: false,
-  },
-  {
-    cardDisplayName: "Praveen Man",
-    cardNumber: "1234567899876543",
-    cardExpiry: "12/24",
-    cardCvv: "123",
-    freeze: false,
-  },
-  {
-    cardDisplayName: "Beer Man",
-    cardNumber: "1234567899876543",
-    cardExpiry: "12/24",
-    cardCvv: "123",
-    freeze: false,
-  },
-  {
-    cardDisplayName: "Lion Man",
-    cardNumber: "1234567899876543",
-    cardExpiry: "12/24",
-    cardCvv: "123",
-    freeze: false,
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getAccountData } from "../../features/account/accountSelector";
+import { setSlide } from "../../features/account/accountSlice";
 
 const CardCarousel = () => {
-  useEffect(() => {
-    localStorage.setItem(
-      "dummyData",
-      JSON.stringify({ dummyData, currentSlide: 0 })
-    );
-  }, []);
+  const dispatch = useDispatch();
+  const accountData = useSelector(getAccountData);
 
   const handleSelect = (currentSlide) => {
-    localStorage.setItem(
-      "dummyData",
-      JSON.stringify({ dummyData, currentSlide: currentSlide })
-    );
+    dispatch(setSlide(currentSlide));
   };
 
-  const CardRender = (displayName, cardNumber, expiryDate) => {
-    const [showCardNumber, setShowCardNumber] = useState(false);
-    const newObj = JSON.parse(localStorage.getItem("dummyData"));
-    const checkFreeze = newObj?.dummyData[newObj?.currentSlide]?.freeze;
-    console.log(checkFreeze);
-
+  const [showCardNumber, setShowCardNumber] = useState(false);
+  const CardRender = (displayName, cardNumber, expiryDate, freeze) => {
     const handleOnClickShowNumber = () => {
       setShowCardNumber((prevState) => !prevState);
     };
-    const last4Digit = cardNumber.slice(12, 16);
+    const last4Digit = cardNumber?.slice(12, 16);
     return (
       <div className={styles["container"]}>
         <div className={styles["card-number-container"]}>
-          {!checkFreeze && (
-            <div
-              className={styles["show-card-number"]}
-              onClick={handleOnClickShowNumber}
-            >
-              <span>
-                <img
-                  src={Eye}
-                  alt="red eye"
-                  className={styles["red-eye"]}
-                ></img>
-              </span>
-              <span>
-                {showCardNumber ? `Hide card number` : `Show card number`}
-              </span>
-            </div>
-          )}
+          {/* {!freeze && ( */}
+          <div
+            className={styles["show-card-number"]}
+            onClick={handleOnClickShowNumber}
+          >
+            <span>
+              <img src={Eye} alt="red eye" className={styles["red-eye"]}></img>
+            </span>
+            <span>
+              {showCardNumber ? `Hide card number` : `Show card number`}
+            </span>
+          </div>
+          {/* )} */}
         </div>
         <div
           className={`${styles["carousel-card"]} ${
-            checkFreeze ? styles["card-freeze"] : ""
+            freeze ? styles["card-freeze"] : ""
           }`}
         >
           <div className={styles["carousel-logo"]}>
@@ -124,15 +81,35 @@ const CardCarousel = () => {
 
   return (
     <div className="d-flex justify-content">
-      <Slider {...settings} className={styles["carousel-container"]}>
-        {dummyData.map((card) => {
-          return CardRender(
-            card.cardDisplayName,
-            card.cardNumber,
-            card.cardExpiry
-          );
-        })}
-      </Slider>
+      {accountData.length === 0 && (
+        <div className="d-flex flex-column justify-content-center align-items-center gap-2">
+          <div className="text text-warning mt-4 fw-bold fs-3">Oh No!</div>
+          <div className="text text-white fs-4">No card found !!!</div>
+        </div>
+      )}
+      {accountData.length > 1 ? (
+        <Slider {...settings} className={styles["carousel-container"]}>
+          {accountData?.map((card) => {
+            return CardRender(
+              card?.cardDisplayName,
+              card?.cardNumber,
+              card?.cardExpiry,
+              card?.freeze
+            );
+          })}
+        </Slider>
+      ) : (
+        <div>
+          {accountData?.map((card) => {
+            return CardRender(
+              card?.cardDisplayName,
+              card?.cardNumber,
+              card?.cardExpiry,
+              card?.freeze
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

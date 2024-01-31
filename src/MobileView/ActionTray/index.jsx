@@ -1,30 +1,37 @@
-import Reac, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import FreezeCard from "../../assets/Freeze card.svg";
 import setSpent from "../../assets/Set spend limit.svg";
 import GPay from "../../assets/GPay.svg";
 import Replace from "../../assets/Replace card.svg";
 import Cancel from "../../assets/Deactivate card.svg";
+import { Modal, Button } from "react-bootstrap";
+import {
+  getAccountData,
+  getAccountSlide,
+} from "../../features/account/accountSelector";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  handleDeleteCard,
+  handleFreezeCard,
+} from "../../features/account/accountSlice";
 
-const ActionTray = ({ borderRadiusAll }) => {
-  const newObj = JSON.parse(localStorage.getItem("dummyData"));
+const ActionTray = ({ borderRadiusAll = 4 }) => {
+  const dispatch = useDispatch();
+  const accountData = useSelector(getAccountData);
+  const currentSlide = useSelector(getAccountSlide);
+  const isFreezeCard = accountData[currentSlide]?.freeze;
 
-  const [isFreezeCard, setIsFreezeCard] = useState(
-    newObj?.dummyData[newObj.currentSlide].freeze
-  );
+  const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    console.log(newObj);
-    setIsFreezeCard(newObj?.dummyData[newObj.currentSlide].freeze);
-  }, [JSON.parse(localStorage.getItem("currentSlide"))]);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const freezeCard = () => {
+    dispatch(handleFreezeCard());
+  };
 
-  const handleFreezeCard = () => {
-    newObj.dummyData[newObj.currentSlide].freeze =
-      !newObj?.dummyData[newObj.currentSlide].freeze;
-    console.log(newObj);
-    localStorage.setItem("dummyData", JSON.stringify(newObj));
-
-    setIsFreezeCard(newObj?.dummyData[newObj.currentSlide].freeze);
+  const deleteCard = () => {
+    dispatch(handleDeleteCard());
   };
 
   return (
@@ -33,9 +40,30 @@ const ActionTray = ({ borderRadiusAll }) => {
         borderRadiusAll === 4 ? "border-radius-all" : ""
       }`}
     >
-      <div className="nav-link">
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Card</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this card?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              deleteCard();
+              handleClose();
+            }}
+          >
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <div className="nav-link" onClick={freezeCard}>
         <img src={FreezeCard} alt={"Freeze Card"} />
-        <div className="active-text" onClick={handleFreezeCard}>
+        <div className="active-text">
           {isFreezeCard ? `Unfreeze Card` : `Freeze Card`}
         </div>
       </div>
@@ -51,7 +79,12 @@ const ActionTray = ({ borderRadiusAll }) => {
         <img src={Replace} alt={"Replace Card"} />
         <div className="active-text">Replace Card</div>
       </div>
-      <div className="nav-link">
+      <div
+        className="nav-link"
+        onClick={() => {
+          accountData.length > 0 && handleShow();
+        }}
+      >
         <img src={Cancel} alt={"Cancel Card"} />
         <div className="active-text">Cancel Card</div>
       </div>
