@@ -3,6 +3,8 @@
     background: #0C365A;
     color:white;
     height: 100vh;
+    position: fixed;
+    width: 420px;
 }
 
 .logo_subheading{
