@@ -42,26 +42,21 @@ const Header = () => {
   return (
     <div className={`p-4 mt-4 ${styles["header-container"]}`}>
       <div className="d-flex justify-content-between align-items-center w-100">
-        <div className="mb-3 w-100">Available Balance</div>
+        <div className="mb-3">Available Balance</div>
       </div>
-      <div className="d-flex flex-row justify-content-between align-items-center">
-        <div className="d-flex align-items-center justify-content-between">
-          <div className="col-2 dollar-symbol">S$</div>
-          <div className="col-7 dollar-value">3,000</div>
-          <div className={`col-2 ${styles["new-card-btn1"]}`}>
-            <img
-              src={box}
-              alt={"icon for adding new card"}
-              onClick={handleNewCardClick}
-            />
-            <div onClick={handleNewCardClick}>New Card</div>
-          </div>
+      <div className="d-flex justify-content-between align-items-center w-75">
+        <div className="d-flex align-items-center justify-content-center">
+          <div className=" dollar-symbol">S$</div>
+          <div className="dollar-value">3,000</div>
         </div>
-
-        {/* <div className="d-flex">
-          <img src={addButton} alt={"icon for adding new card"} />
-          <div className="new-card-btn">New Card</div>
-        </div> */}
+        <div className={`me-3 ${styles["new-card-btn1"]}`}>
+          <img
+            src={box}
+            alt={"icon for adding new card"}
+            onClick={handleNewCardClick}
+          />
+          <span onClick={handleNewCardClick}>New Card</span>
+        </div>
       </div>
       <div className="d-flex mt-4 mb-2 gap-3">
         <div className="fw-bold active-nav">My debit Cards</div>

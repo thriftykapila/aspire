@@ -10,20 +10,13 @@
     font-weight: 600;
 }
 
-.new-card-btn{
-    font-size: 13px;
-    font-weight: bold;
-    color: #23CEFD;
-    margin-left: 6px;
-}
-
 .header-container{
-     
     position: fixed;
     top: 0;
     width: 100vw;
     height: 25vh;
 }
+
 
 .active-nav{
     padding-bottom: 6px;
@@ -44,4 +37,5 @@
     gap: 4px;
     position: relative;
     margin-left : 1200;
+
 }
