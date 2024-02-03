@@ -3,8 +3,8 @@
     background: #0C365A;
     color:white;
     height: 100vh;
-    position: fixed;
-    width: 420px;
+    position: relative;
+    width: 100%;
 }
 
 .logo_subheading{
@@ -20,4 +20,21 @@
     font-size: 16px;
     font-weight: bold;
     color: #01D167;
+}
+
+.desktop-container{
+    display:flex;
+    height:100vh;
+    width:100vw;
+    flex-direction:row;
+    overflow:hidden;
+}
+
+.nav-shell{
+    width: 25%;
+}
+
+.desktop-main{
+    width: 75%;
+    overflow-y: auto;
 }

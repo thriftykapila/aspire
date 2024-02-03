@@ -1,7 +1,23 @@
-.card-container-desktop{
-    padding: 30px;
-    margin-top: 30px;
-    box-shadow: 0px -2px 12px #00000014;
-    box-shadow: blu;
-    width: 1280px;
+.card-shell{
+    display:flex;
+    width:100%;
+    flex-direction:row;
+    flex-wrap:wrap;
 }
+
+.card-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:50%;
+    min-width:425px;
+    flex-grow:1;
+}
+
+.card-group{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:50%;
+    flex-grow:1;
+    }

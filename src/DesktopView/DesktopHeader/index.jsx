@@ -44,7 +44,7 @@ const Header = () => {
       <div className="d-flex justify-content-between align-items-center w-100">
         <div className="mb-3">Available Balance</div>
       </div>
-      <div className="d-flex justify-content-between align-items-center w-75">
+      <div className="d-flex justify-content-between align-items-center ">
         <div className="d-flex align-items-center justify-content-center">
           <div className=" dollar-symbol">S$</div>
           <div className="dollar-value">3,000</div>

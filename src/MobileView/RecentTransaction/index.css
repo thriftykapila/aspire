@@ -34,3 +34,9 @@
     font-size: 13px;
     padding-block:16px ;
 }
+
+.recent-container{
+    width:100%;
+    min-width:320px;
+    background:white;
+}

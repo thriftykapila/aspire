@@ -7,8 +7,8 @@ import Credit from "../assets/Credit.svg";
 import Account from "../assets/Account.svg";
 import DesktopHeader from "./DesktopHeader";
 export const DesktopView = () => (
-  <div className="row w-100">
-    <div className="col-3">
+  <div className={`${styles["desktop-container"]}`}>
+    <div className={`${styles["nav-shell"]}`}>
       <div className={`${styles["nav-container"]}`}>
         <img src={Logo} alt={"logo"} />
         <div className={`${styles["logo_subheading"]}`}>
@@ -41,7 +41,7 @@ export const DesktopView = () => (
         </div>
       </div>
     </div>
-    <div className="col-9">
+    <div className={`${styles["desktop-main"]}`}>
       <DesktopHeader />
     </div>
   </div>
