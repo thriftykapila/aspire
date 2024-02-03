@@ -10,7 +10,7 @@ const CardContainer = () => {
       <div className="col-md-3 col-lg-6 col-sm-3">
         <CardCarousel />
 
-        <ActionTray borderRadiusAll={4} />
+        <ActionTray isDesktopView={true} />
       </div>
       <div className="col-6">
         <CardDetails />

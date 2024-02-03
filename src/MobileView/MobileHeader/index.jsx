@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
 import "./header.css";
 import addButton from "../../assets/box.svg";
 import Logo from "../../assets/Logo.svg";
+import { Modal, Button } from "react-bootstrap";
 import {
   generateRandom12DigitNumber,
   generateRandomMMYY,

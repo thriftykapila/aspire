@@ -1,22 +1,60 @@
 import styles from "./desktopHeader.module.css";
-import addButton from "../../assets/box.svg";
-import Logo from "../../assets/Logo.svg";
 import box from "../../assets/box1.svg";
 import CardContainer from "../CardContainer";
+import { Modal, Button } from "react-bootstrap";
+import {
+  generateRandom12DigitNumber,
+  generateRandomMMYY,
+} from "../../utils/utils";
+import { useDispatch } from "react-redux";
+import { addCard } from "../../features/account/accountSlice";
+import { useState } from "react";
+
 const Header = () => {
+  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const [userName, setUserName] = useState("");
+
+  const handleNewCardClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setUserName("");
+  };
+
+  const handleUserNameChange = (event) => {
+    setUserName(event.target.value);
+  };
+
+  const handleSaveCard = () => {
+    let cardData = {
+      cardDisplayName: userName,
+      cardNumber: generateRandom12DigitNumber(),
+      cardExpiry: generateRandomMMYY(),
+      cardCvv: "123",
+      freeze: false,
+    };
+    dispatch(addCard(cardData));
+    handleCloseModal();
+  };
   return (
     <div className={`p-4 mt-4 ${styles["header-container"]}`}>
       <div className="d-flex justify-content-between align-items-center w-100">
         <div className="mb-3 w-100">Available Balance</div>
-        {/* <img src={Logo} alt={"logo"} /> */}
       </div>
       <div className="d-flex flex-row justify-content-between align-items-center">
         <div className="d-flex align-items-center justify-content-between">
           <div className="col-2 dollar-symbol">S$</div>
           <div className="col-7 dollar-value">3,000</div>
           <div className={`col-2 ${styles["new-card-btn1"]}`}>
-            <img src={box} alt="box" />
-            New Card
+            <img
+              src={box}
+              alt={"icon for adding new card"}
+              onClick={handleNewCardClick}
+            />
+            <div onClick={handleNewCardClick}>New Card</div>
           </div>
         </div>
 
@@ -29,6 +67,28 @@ const Header = () => {
         <div className="fw-bold active-nav">My debit Cards</div>
         <div className="opacity-50">All Company Cards</div>
       </div>
+      <Modal show={showModal} onHide={handleCloseModal} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Enter Card Name</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Card Name"
+            value={userName}
+            onChange={handleUserNameChange}
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleSaveCard}>
+            Save
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <CardContainer />
     </div>
   );

@@ -16,7 +16,7 @@ import {
   handleFreezeCard,
 } from "../../features/account/accountSlice";
 
-const ActionTray = ({ borderRadiusAll = 2 }) => {
+const ActionTray = ({ isDesktopView = false }) => {
   const dispatch = useDispatch();
   const accountData = useSelector(getAccountData);
   const currentSlide = useSelector(getAccountSlide);
@@ -37,7 +37,7 @@ const ActionTray = ({ borderRadiusAll = 2 }) => {
   return (
     <div
       className={`action-tray ${
-        borderRadiusAll === 4 ? "border-radius-all" : ""
+        isDesktopView ? "mt-5 w-75 border-radius-all" : ""
       }`}
     >
       <Modal show={show} onHide={handleClose} centered>
