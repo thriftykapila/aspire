@@ -1,4 +1,4 @@
-import styles from "./index.css";
+import styles from "./index.module.css";
 import cardDetailIcon from "../../assets/Group 11889-1.svg";
 import upArrow from "../../assets/down-arrow-1.svg";
 import fileStorage from "../../assets/file-storage.svg";
@@ -8,10 +8,7 @@ import megaphone from "../../assets/megaphone.svg";
 
 const RecentTransaction = () => {
   return (
-    <div
-      className="p-4 "
-      style={{ width: "100%", minWidth: "320px", background: "white" }}
-    >
+    <div className={`p-4 ${styles["recent-container"]}`}>
       <div className="p-4 mb-4 d-flex justify-content-between inner-card">
         <div className="d-flex gap-2">
           <img height={24} src={cardDetailIcon} alt={"card details icon"} />

@@ -2,7 +2,7 @@ import ActionTray from "../../MobileView/ActionTray";
 import CardDetails from "../../MobileView/CardDetails";
 import RecentTransaction from "../../MobileView/RecentTransaction";
 import CardCarousel from "../../components/carousel/CardCarousel";
-import styles from "./index.css";
+import styles from "./index.module.css";
 
 const CardContainer = () => {
   return (
